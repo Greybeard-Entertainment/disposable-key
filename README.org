@@ -1,0 +1,142 @@
+* Emacs Disposable Keybindings
+
+This package gives you a single function and a single minor mode that
+fix the problem of wanting to have disposable key bindings for just
+this once.
+
+* Introduction
+
+** Disposable key bind concept
+
+Suppose you had a function which you wanted to use contextually
+(because you need it), but you don't want to set in your =init.el= or
+any of the dependent files.
+
+You could use =local-set-key= but that requires you to press the
+combination first, plus it doesn't tell you what that function was
+bound to before.  This I used a whole lot, but the discover-ability of
+this feature leaves much to be desired.  This pattern of usage made me
+keep a collection of keys as designated single-use key-bindings.  So
+why not formalise this form of usage.
+
+This package essentially allows you to do just that.  You bind a bunch
+of keys to a function which allows you to remap them instantly when
+you click them, I usually had all the function keys bound to that.
+
+** Disposable key mode
+
+This package also allows you to do something more aggressive.  In the
+later stages of your Emacs learning curve you might stop accidentally
+bumping the keyboard and making unintentional inputs.  At this stage,
+"the keyboard is your oyster", in the sense that rather than being
+told that a key is unbound, I might want to choose to bind it to
+something useful. This is where the =disposable-key-mode= comes in.
+
+I don't recommend starting this minor mode for novices.
+
+* Installation
+
+** Direct download
+
+Download this file and put it in your =load-path=.  Then add
+
+#+BEGIN_SRC emacs-lisp
+  (require 'disposable-key)
+#+END_SRC
+
+** TODO Using the Emacs GUI
+
+Run =M-x package-list-packages=, which will open a list of packages,
+where you can use =C-s= to find this package left click to open the
+menu and left click on the box saying "install" to actually install
+the package.
+
+** TODO using bare =use-package=
+
+Add this to your =init.el=.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package disposable-key
+	:ensure t)
+#+END_SRC
+
+** TODO Using =elpaca=
+
+[[https://github.com/progfolio/elpaca][Elpaca]] is what I personally use these days so assuming that you have
+=elpaca-use-package=, you could do:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package disposable-key
+	:ensure t
+	:elpaca
+	(:host github
+		   :repo "Greybeard-Entertainment/disposable-key"
+		   :branch "barba"))
+#+END_SRC
+
+** TODO Using =straight=
+
+TODO
+
+*TODO: means that this does not work yet*
+
+* Usage
+
+This package provides you with three key functions.
+
+** Bind =disposable-bind= to a few keys
+
+If you have a cluster of keys that you want to use a placeholders for
+useful functions, you should bind these keys to the =disposable-bind=
+function.
+
+Example:
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "<f9>") 'disposable-bind)
+  (global-set-key (kbd "<f12>") 'disposable-bind)
+  (global-set-key (kbd "<f6>") 'disposable-bind)
+  (global-set-key (kbd "<f7>") 'disposable-bind)
+  (global-set-key (kbd "<f8>") 'disposable-bind)
+#+END_SRC
+
+Which will make the function row keys usable as disposable key-bindings.
+
+** Bind =disposable-key-force-rebind=
+
+This function is not necessary but it is highly recommended to bind it
+to some other key.
+
+If you press this before pressing any of the other disposable
+bindings, it would allow you to change the binding.
+
+Example: you're writing an Emacs lisp buffer, you bind =<f9>= to
+=eval-buffer=.  Then you decided that you want to change your testing
+methodology and started using =cask=, so you pressed
+=diposable-key-force-rebind= and then =<f9>= and changed the binding.
+
+** Enable the =disposable-key-global-mode=
+
+This is more of a radical solution.  I'm long past the situation in
+which I could be making random inputs into Emacs, or near-miss a
+button.  Instead I'm much more annoyed at the fact that I have 101
+keys on a keyboard and can't realistically remember all of the key
+bindings.  With =diposable-key= mode I don't have to; all bindings are
+temporary and persist until the next time I re-run Emacs, or hit the
+=disposable-key-force-rebind= key.  As such, I don't want to have to
+press =M-x local-set-key= every time I want to make a local binding.
+
+
+* Development Roadmap
+
+** TODO Make bindings persistent
+
+** TODO Differentiate global disposable keybinds from local keybinds
+
+** TODO Code review of the main repo
+
+* License
+
+As specified in the appropriate file, this work is Free Software, and
+while it is distributed in the hope that it might be useful, it is not
+at all guaranteed to do anything.
