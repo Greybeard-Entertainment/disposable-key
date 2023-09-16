@@ -4,6 +4,26 @@ This package gives you a single function and a single minor mode that
 fix the problem of wanting to have disposable key bindings for just
 this once.
 
+* TL;DR
+
+#+BEGIN_SRC emacs-lisp
+(use-package disposable-key
+  :ensure t
+  :elpaca
+  (:host github
+		 :repo "Greybeard-Entertainment/disposable-key"
+		 :branch "barba")
+  :bind
+  ("<f6>" . disposable-bind)
+  ("<f7>" . disposable-bind)
+  ("<f8>" . disposable-bind)
+  ("<f9>" . disposable-bind)
+  ;; f10 -- menu most DEs
+  ;; f11 -- fullscreen. Why would you want that IDK, but it doesn't hurt anyone
+  ("<f12>" . disposable-bind)
+  ("C-x M-r" . disposable-key-force-rebind))
+#+END_SRC
+
 * Introduction
 
 ** Disposable key bind concept
@@ -44,7 +64,21 @@ Download this file and put it in your =load-path=.  Then add
   (require 'disposable-key)
 #+END_SRC
 
-** TODO Using the Emacs GUI
+** Using =elpaca=
+
+[[https://github.com/progfolio/elpaca][Elpaca]] is what I personally use these days so assuming that you have
+=elpaca-use-package=, you could do:
+
+#+BEGIN_SRC emacs-lisp
+  (use-package disposable-key
+	:ensure t
+	:elpaca
+	(:host github
+		   :repo "Greybeard-Entertainment/disposable-key"
+		   :branch "barba"))
+#+END_SRC
+
+** Using the Emacs GUI
 
 Run =M-x package-list-packages=, which will open a list of packages,
 where you can use =C-s= to find this package left click to open the
@@ -60,25 +94,8 @@ Add this to your =init.el=.
 	:ensure t)
 #+END_SRC
 
-** TODO Using =elpaca=
-
-[[https://github.com/progfolio/elpaca][Elpaca]] is what I personally use these days so assuming that you have
-=elpaca-use-package=, you could do:
-
-#+BEGIN_SRC emacs-lisp
-  (use-package disposable-key
-	:ensure t
-	:elpaca
-	(:host github
-		   :repo "Greybeard-Entertainment/disposable-key"
-		   :branch "barba"))
-#+END_SRC
-
-** TODO Using =straight=
-
-TODO
-
-*TODO: means that this does not work yet*
+This will begin working as soon as I commit the package to one of the
+packaging repositories.
 
 * Usage
 
