@@ -46,7 +46,7 @@ functions were defined.")
   "Force rebinding the next disposable key.
 
 This function is nothing more than changing the variable
-'disposable-key-rebind' to true.  The reason it exists is to
+`disposable-key-rebind' to true.  The reason it exists is to
 provide a simple named binding that can be included in the
 documentation to the package."
   (interactive)
@@ -54,20 +54,19 @@ documentation to the package."
 
 
 (defun toggle-override-undefined ()
-  "Toggle the overriding of the 'undefined' function."
+  "Toggle the overriding of the `undefined' function."
   (if undefined-overridden
 	  (progn
 		(fset 'undefined undefined-func-placeholder)
 		(setq undefined-overridden nil))
-	(progn
 	  (setq undefined-func-placeholder (symbol-function 'undefined))
-	  (fset 'undefined (symbol-function 'disposable-bind))
-	  (setq undefined-overridden t))))
+	  (fset 'undefined (symbol-function 'diposable-key-bind))
+	  (setq undefined-overridden t)))
 
-(defun disposable-bind ()
+(defun diposable-key-bind ()
   "Bind current disposable key.
 
-You do not need this function if you use 'disposable-key-mode'.
+You do not need this function if you use `disposable-key-mode'.
 
 This function should be used to bind to keys that are not defined
 yet, and you want to be able to define quickly, when you need to
@@ -88,13 +87,14 @@ use them."
 This mode is the more aggresive of the two ways to use this package.
 
 If you enable this mode, the built-in function which gets called
-when you press an undefined key ('undefined') is overridden with
+when you press an undefined key (`undefined') is overridden with
 a way to bind the key to something, and uses the
-'completing-read' interface to query for the name of the
+`completing-read' interface to query for the name of the
 function.
 
 I prefer this way, but I can see why most people would prefer
-that the disposable bindings be reserved for some keys, but not others."
+that the disposable bindings be reserved for some keys, but not
+others."
   :init-value nil
   :lighter " ĸ"
   :keymap disposable-key-mode-map
@@ -102,13 +102,13 @@ that the disposable bindings be reserved for some keys, but not others."
 
 ;;;###autoload
 (defun turn-on-disposable-key-mode ()
-  "Turn on 'disposable-key-mode'."
+  "Turn on `disposable-key-mode'."
   (interactive)
   (disposable-key-mode +1))
 
 ;;;###autoload
 (defun turn-off-disposable-key-mode ()
-  "Turn off 'disposable-key-mode'."
+  "Turn off `disposable-key-mode'."
   (interactive)
   (disposable-key-mode -1))
 

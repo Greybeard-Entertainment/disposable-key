@@ -14,13 +14,13 @@ this once.
 		 :repo "Greybeard-Entertainment/disposable-key"
 		 :branch "barba")
   :bind
-  ("<f6>" . disposable-bind)
-  ("<f7>" . disposable-bind)
-  ("<f8>" . disposable-bind)
-  ("<f9>" . disposable-bind)
+  ("<f6>" . diposable-key-bind)
+  ("<f7>" . diposable-key-bind)
+  ("<f8>" . diposable-key-bind)
+  ("<f9>" . diposable-key-bind)
   ;; f10 -- menu most DEs
   ;; f11 -- fullscreen. Why would you want that IDK, but it doesn't hurt anyone
-  ("<f12>" . disposable-bind)
+  ("<f12>" . diposable-key-bind)
   ("C-x M-r" . disposable-key-force-rebind))
 #+END_SRC
 
@@ -101,20 +101,20 @@ packaging repositories.
 
 This package provides you with three key functions.
 
-** Bind =disposable-bind= to a few keys
+** Bind =diposable-key-bind= to a few keys
 
 If you have a cluster of keys that you want to use a placeholders for
-useful functions, you should bind these keys to the =disposable-bind=
+useful functions, you should bind these keys to the =diposable-key-bind=
 function.
 
 Example:
 
 #+BEGIN_SRC emacs-lisp
-  (global-set-key (kbd "<f9>") 'disposable-bind)
-  (global-set-key (kbd "<f12>") 'disposable-bind)
-  (global-set-key (kbd "<f6>") 'disposable-bind)
-  (global-set-key (kbd "<f7>") 'disposable-bind)
-  (global-set-key (kbd "<f8>") 'disposable-bind)
+  (global-set-key (kbd "<f9>") 'diposable-key-bind)
+  (global-set-key (kbd "<f12>") 'diposable-key-bind)
+  (global-set-key (kbd "<f6>") 'diposable-key-bind)
+  (global-set-key (kbd "<f7>") 'diposable-key-bind)
+  (global-set-key (kbd "<f8>") 'diposable-key-bind)
 #+END_SRC
 
 Which will make the function row keys usable as disposable key-bindings.
