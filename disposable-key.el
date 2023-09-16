@@ -75,6 +75,7 @@ use them."
   (let ((key (this-command-keys)))
 	(let ((definition (keymap-lookup disposable-key-mode-map (key-description key))))
 	  (if (or disposable-key-rebind (not definition))
+		  ;; Because this has a side effect, defer it and don't use a `let*'
 		  (let ((function-name (completing-read (format "Bind %s to: " (key-description key)) obarray 'commandp)))
 			(keymap-set disposable-key-mode-map (key-description key) (intern function-name))
 			(setq disposable-key-rebind nil))
