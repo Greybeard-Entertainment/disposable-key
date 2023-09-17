@@ -150,8 +150,6 @@ press =M-x local-set-key= every time I want to make a local binding.
 
 ** TODO Differentiate global disposable keybinds from local keybinds
 
-** TODO Code review of the main repo
-
 * License
 
 As specified in the appropriate file, this work is Free Software, and
