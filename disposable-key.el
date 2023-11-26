@@ -3,7 +3,7 @@
 ;; Copyright: Aleksandr Petrosyan
 ;; Author: Aleksandr Petrosyan <TODO>
 ;; keywords: binding
-;; Version: 0.0.1
+;; Version: 0.0.2
 
 ;;; Blurb
 
@@ -59,10 +59,11 @@ documentation to the package."
 	  (progn
 		(fset 'undefined undefined-func-placeholder)
 		(setq undefined-overridden nil))
-	  (setq undefined-func-placeholder (symbol-function 'undefined))
-	  (fset 'undefined (symbol-function 'diposable-key-bind))
-	  (setq undefined-overridden t)))
+	(setq undefined-func-placeholder (symbol-function 'undefined))
+	(fset 'undefined (symbol-function 'diposable-key-bind))
+	(setq undefined-overridden t)))
 
+;;;###autoload
 (defun diposable-key-bind ()
   "Bind current disposable key.
 
