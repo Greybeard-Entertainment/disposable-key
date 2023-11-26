@@ -64,7 +64,7 @@ documentation to the package."
 	(setq undefined-overridden t)))
 
 ;;;###autoload
-(defun diposable-key-bind ()
+(defun disposable-key-bind ()
   "Bind current disposable key.
 
 You do not need this function if you use `disposable-key-mode'.
