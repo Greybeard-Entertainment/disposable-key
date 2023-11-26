@@ -3,7 +3,7 @@
 ;; Copyright: Aleksandr Petrosyan
 ;; Author: Aleksandr Petrosyan <TODO>
 ;; keywords: binding
-;; Version: 0.0.2
+;; Version: 0.0.3
 
 ;;; Blurb
 
